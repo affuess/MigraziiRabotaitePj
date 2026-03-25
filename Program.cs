@@ -47,6 +47,8 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

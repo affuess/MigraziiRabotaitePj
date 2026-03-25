@@ -57,5 +57,14 @@ namespace MigraziiRabotaitePj.Controllers
 
             return Ok(new { token });
         }
+        [HttpPost("refresh")]
+        public async Task<IActionResult> Refresh([FromBody] string refreshToken)
+        {
+            var token = await _tokenService.RevokeRefreshTokenAsync(refreshToken);
+            if (!token) return Unauthorized();
+
+            return Ok("Token revoked");
+        }
+
     }
 }
